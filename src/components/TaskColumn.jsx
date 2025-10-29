@@ -2,6 +2,8 @@ import React from "react";
 import Card from "./Card";
 
 function TaskColumn({ title, tasks, onStatusChange }) {
+
+  // color changer based upon status column
   const headerColors = {
     "To Do": "bg-info text-white",
     "In Progress": "bg-warning text-dark",
@@ -21,6 +23,7 @@ function TaskColumn({ title, tasks, onStatusChange }) {
 
         {/* Task List */}
         <div className="d-flex flex-column gap-3">
+          {/* this returns array of task length so that if task is present or not */}
           {tasks.length > 0 ? (
             tasks.map((task) => (
               <Card key={task.id} task={task} onStatusChange={onStatusChange} />

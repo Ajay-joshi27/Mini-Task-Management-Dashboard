@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { getTasks, addTask, updateTask } from "../api";
+import { getTasks, addTask, updateTask, deleteDoneTasks } from "../api";
 import TaskColumn from "./TaskColumn";
 import "./NotesApp.css";
 
 function NotesApp() {
+  // in this state we are storing the form data
   const [data, setData] = useState({ title: "", description: "", status: "To Do" });
+  //  in this we are storing all data of the tasks here multiple form data is present
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     getTasks().then((res) => setTasks(res.data));
   }, []);
 
+  // this function handles the change of status 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
@@ -23,6 +26,8 @@ function NotesApp() {
     setData({ title: "", description: "", status: "To Do" });
   };
 
+
+// this below function handles the status change from the task columns
   const handleStatusChange = (id, newStatus) => {
     updateTask(id, { status: newStatus }).then(() =>
       setTasks((prev) =>
@@ -31,8 +36,16 @@ function NotesApp() {
     );
   };
 
+
+  // this function we have created to delete all completed tasks
+  const handleClearDone = async () => {
+    await deleteDoneTasks();
+    getTasks().then((res) => setTasks(res.data));
+  };
+
   return (
     <>
+    {/* this is header section where we are adding title and descriptions  */}
      <section className="headerdiv container my-5">
   <div className="row justify-content-center g-3">
 
@@ -51,7 +64,7 @@ function NotesApp() {
             onChange={handleChange}
           />
         </div>
-
+{/* here we are adding logic for adding description */}
         <div className="mb-3">
           <label htmlFor="taskDescription" className="form-label">Description</label>
           <textarea
@@ -100,16 +113,26 @@ function NotesApp() {
       </div>
     </div>
 
+    <div className="col-12 col-md-3 col-lg-2 d-flex justify-content-center align-items-start">
+      <button className="btn btn-danger w-100" onClick={handleClearDone}>
+        Clear Done Tasks
+      </button>
+    </div>
+
   </div>
-</section>
+</section>   {/*here header section ends */ }
 
 {/* here form ends */}
 
 {/* from here reusable components started */}
+
+
       <section className="board">
         {/* reusable component 1 ToDo */}
+        {/* here we are doing props drilling  */}
         <TaskColumn
           title="To Do"
+          // filtering tasks based on status 
           tasks={tasks.filter((t) => t.status === "To Do")}
           onStatusChange={handleStatusChange}
         />
