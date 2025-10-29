@@ -1,6 +1,6 @@
-# 📝 Task Management App (React + Axios + JSON Server)
+# 📝 Mini Task Management Dashboard(React + Axios + JSON Server)
 
-A simple yet powerful **Task/Notes Management Application** built using **React.js**, **Axios**, and **Bootstrap**.  
+A simple yet powerful **Mini Task Management Dashboard** built using **React.js**, **Axios**, and **Bootstrap**.  
 This app allows users to **add**, **view**, and **update task statuses** (To Do, In Progress, Done) in a clean and dynamic interface.
 
 ---
