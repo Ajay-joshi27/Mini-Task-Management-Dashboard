@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // const API_URL = "http://localhost:3000/tasks";
-const API_URL = "https://backend-data-6d6l.onrender.com";
+const API_URL = "https://backend-data-g1ay.onrender.com/tasks";
+
 
 export const getTasks = () => axios.get(API_URL);
 export const addTask = (task) => axios.post(API_URL, task);
