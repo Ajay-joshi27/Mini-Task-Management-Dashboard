@@ -1,6 +1,6 @@
 # 📝 Mini Task Management Dashboard(React + Axios + JSON Server)
 
-[LIVE WORKING LINK](https://mini-task-management-dashboard-afugoyfw9.vercel.app/)
+[LIVE WORKING LINK](https://mini-task-management-dashboard.vercel.app/)
 
 
 A simple yet powerful **Mini Task Management Dashboard** built using **React.js**, **Axios**, and **Bootstrap**.  
